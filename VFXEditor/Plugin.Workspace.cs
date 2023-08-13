@@ -27,7 +27,7 @@ namespace VfxEditor {
         }
 
         private static void OpenWorkspace() {
-            FileDialogManager.OpenFileDialog( "Select a Workspace File", "Workspace{.vfxworkspace,.json}", ( bool ok, string res ) => {
+            FileDialogManager.OpenFileDialog( "选择一个工作区文件", "工作区{.vfxworkspace,.json}", ( bool ok, string res ) => {
                 if( !ok ) return;
                 try {
                     var selectedFile = new FileInfo( res );
@@ -46,7 +46,7 @@ namespace VfxEditor {
                     }
                 }
                 catch( Exception e ) {
-                    PluginLog.Error( e, "Could not load workspace" );
+                    PluginLog.Error( e, "无法加载工作区" );
                 }
             } );
         }
@@ -69,7 +69,7 @@ namespace VfxEditor {
                 manager.WorkspaceImport( meta, loadLocation );
             }
 
-            UiUtils.OkNotification( "Opened workspace" );
+            UiUtils.OkNotification( "工作区已打开" );
 
             Loading = false;
         }
@@ -80,7 +80,7 @@ namespace VfxEditor {
         }
 
         private static void SaveAsWorkspace() {
-            FileDialogManager.SaveFileDialog( "Select a Save Location", ".vfxworkspace", "workspace", "vfxworkspace", ( bool ok, string res ) => {
+            FileDialogManager.SaveFileDialog( "选择保存位置", ".vfxworkspace", "工作区", "vfxworkspace", ( bool ok, string res ) => {
                 if( !ok ) return;
                 CurrentWorkspaceLocation = res;
                 ExportWorkspace();
@@ -102,7 +102,7 @@ namespace VfxEditor {
             ZipFile.CreateFromDirectory( saveLocation, CurrentWorkspaceLocation );
             Directory.Delete( saveLocation, true );
 
-            UiUtils.OkNotification( "Saved workspace" );
+            UiUtils.OkNotification( "保存工作区" );
         }
 
         public static void CleanupExport( IFileDocument document ) {

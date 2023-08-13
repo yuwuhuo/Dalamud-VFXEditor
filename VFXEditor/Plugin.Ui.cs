@@ -49,32 +49,32 @@ namespace VfxEditor {
         }
 
         public static void DrawFileMenu() {
-            using var _ = ImRaii.PushId( "Menu" );
+            using var _ = ImRaii.PushId( "菜单" );
 
-            if( ImGui.BeginMenu( "File" ) ) {
-                ImGui.TextDisabled( "Workspace" );
+            if( ImGui.BeginMenu( "文件" ) ) {
+                ImGui.TextDisabled( "工作区" );
                 ImGui.SameLine();
-                UiUtils.HelpMarker( "A workspace allows you to save multiple vfx replacements at the same time, as well as any imported textures or item renaming (such as particles or emitters)" );
+                UiUtils.HelpMarker( "一个工作区允许你同时保存多个VFX替换，导入的贴图或物品的重命名（例如粒子或发射器）。工作区是一个类似于项目或文件夹的容器，可以用来管理VFX替换和其他相关资源。" );
 
-                if( ImGui.MenuItem( "New" ) ) NewWorkspace();
-                if( ImGui.MenuItem( "Open" ) ) OpenWorkspace();
-                if( ImGui.MenuItem( "Save" ) ) SaveWorkspace();
-                if( ImGui.MenuItem( "Save As" ) ) SaveAsWorkspace();
+                if( ImGui.MenuItem( "新创建" ) ) NewWorkspace();
+                if( ImGui.MenuItem( "打开" ) ) OpenWorkspace();
+                if( ImGui.MenuItem( "保存" ) ) SaveWorkspace();
+                if( ImGui.MenuItem( "另存为" ) ) SaveAsWorkspace();
 
                 ImGui.Separator();
-                if( ImGui.MenuItem( "Settings" ) ) Configuration.Show();
-                if( ImGui.MenuItem( "Tools" ) ) ToolsDialog.Show();
-                if( ImGui.BeginMenu( "Help" ) ) {
-                    if( ImGui.MenuItem( "Github" ) ) UiUtils.OpenUrl( "https://github.com/0ceal0t/Dalamud-VFXEditor" );
-                    if( ImGui.MenuItem( "Report an Issue" ) ) UiUtils.OpenUrl( "https://github.com/0ceal0t/Dalamud-VFXEditor/issues" );
-                    if( ImGui.MenuItem( "Wiki" ) ) UiUtils.OpenUrl( "https://github.com/0ceal0t/Dalamud-VFXEditor/wiki" );
+                if( ImGui.MenuItem( "设置" ) ) Configuration.Show();
+                if( ImGui.MenuItem( "工具" ) ) ToolsDialog.Show();
+                if( ImGui.BeginMenu( "帮助" ) ) {
+                    if( ImGui.MenuItem( "Github" ) ) UiUtils.OpenUrl( "https://github.com/yuwuhuo/Dalamud-VFXEditor" );
+                    if( ImGui.MenuItem( "报告问题" ) ) UiUtils.OpenUrl( "https://github.com/0ceal0t/Dalamud-VFXEditor/issues" );
+                    if( ImGui.MenuItem( "指南" ) ) UiUtils.OpenUrl( "https://github.com/0ceal0t/Dalamud-VFXEditor/wiki" );
                     ImGui.EndMenu();
                 }
 
                 ImGui.EndMenu();
             }
 
-            if( ImGui.BeginMenu( "Export" ) ) {
+            if( ImGui.BeginMenu( "导出" ) ) {
                 if( ImGui.MenuItem( "Penumbra" ) ) PenumbraDialog.Show();
                 if( ImGui.MenuItem( "TexTools" ) ) TexToolsDialog.Show();
                 ImGui.EndMenu();
@@ -82,9 +82,9 @@ namespace VfxEditor {
         }
 
         public static void DrawManagersMenu( IFileManager manager ) {
-            using var _ = ImRaii.PushId( "Menu" );
+            using var _ = ImRaii.PushId( "菜单" );
 
-            if( ImGui.MenuItem( "Textures" ) ) TextureManager.Show();
+            if( ImGui.MenuItem( "纹理" ) ) TextureManager.Show();
             ImGui.Separator();
             DrawManagerMenu( manager, "Vfx", AvfxManager );
             DrawManagerMenu( manager, "Tmb", TmbManager );
